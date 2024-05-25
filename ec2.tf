@@ -11,12 +11,4 @@ resource "aws_instance" "ssm_instances" {
     Name        = "SSM Instance"
     Environment = "Development"
   }
-
-  provisioner "local-exec" {
-    command = <<EOF
-      rm -f ec2_instance_ids.txt
-      touch ec2_instance_ids.txt
-      echo ${aws_instance.ssm_instances[count.index].id} >> ec2_instance_ids.txt
-    EOF
-  }
 }
