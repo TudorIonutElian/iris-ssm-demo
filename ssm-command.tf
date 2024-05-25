@@ -3,7 +3,13 @@ resource "null_resource" "command_execution" {
     aws_instance.ssm_instances, aws_resourcegroups_group.development_ec2_resources
   ]
 
-  provisioner "local-exec" {
-    command = "aws ssm send-command --document-name apache_document --targets Key=resource-groups:Name,Values=Development-EC2-Resources --region eu-central-1"
-  }
+
+    provisioner "local-exec" {
+        command = <<EOT
+                aws ssm send-command \
+                    --targets Key=tag:Environment,Values=Development-${BUILD_NUMBER} \
+                    [...]
+        EOT
+    }
+
 }
