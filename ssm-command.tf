@@ -14,8 +14,6 @@ resource "null_resource" "command_execution" {
                     --output json | jq -r '.[] | split("/") | .[-1]' > instance_ids_${var.BUILD_NUMBER}.txt
                 
                 mapfile -t instance_ids < instance_ids_${var.BUILD_NUMBER}.txt
-                
-                INSTANCE_IDS=$(IFS=','; echo "${instance_ids[*]}")
 
                 cat instance_ids_${var.BUILD_NUMBER}.txt
                 cat $INSTANCE_IDS
