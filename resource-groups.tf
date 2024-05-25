@@ -12,6 +12,9 @@ resource "aws_resourcegroups_group" "development_ec2_resources" {
                 "Key": "Environment",
                 "Values": ["Development"]
             }
+        ],
+        "StatusFilters": [
+            "RUNNING"
         ]
     }
     JSON
