@@ -6,8 +6,18 @@ resource "null_resource" "command_execution" {
 
     provisioner "local-exec" {
         command = <<EOT
-                aws ssm send-command \
-                    --targets Key=tag:Environment,Values=Development-${BUILD_NUMBER}
+                touch instance_ids_${BUILD_NUMBER}.txt
+
+                aws resource-groups list-group-resources \
+                    --group-name "Development-EC2-Resources" \
+                    --query 'ResourceIdentifiers[?ResourceType==`AWS::EC2::Instance`].ResourceArn' \
+                    --output json | jq -r '.[] | split("/") | .[-1]' > instance_ids_${BUILD_NUMBER}.txt
+                
+                mapfile -t instance_ids < instance_ids_${BUILD_NUMBER}.txt
+                
+                INSTANCE_IDS=$(IFS=','; echo "${instance_ids[*]}")
+
+                cat instance_ids_${BUILD_NUMBER}.txt
         EOT
     }
 
