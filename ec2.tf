@@ -11,4 +11,14 @@ resource "aws_instance" "ssm_instances" {
     Name        = "SSM Instance"
     Environment = "Development"
   }
+
+  provisioner "local-exec" {
+   # the below command replaces the existing instance id in the file, if any 
+   # and replaces it with the new instance id
+    command = <<EOF
+      rm -f ec2_instance_ids.txt
+      touch ec2_instance_ids.txt
+      echo ${aws_instance.automation.id} >> ec2_instance_ids.txt
+    EOF
+  }
 }
