@@ -27,7 +27,7 @@ jobs:
               echo "Repo name folder exists -- will move inside the folder"
             else
               echo "Repo name folder does not exist -- will clone the repo"
-                git clone https://github.com/${{ env.USERNAME }}/${{ env.REPO_NAME }}.git
+                git clone https://github.com/${{ env.REPO_NAME }}.git
             fi
 
             cd ${{ env.REPO_NAME }}
