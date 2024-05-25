@@ -20,7 +20,7 @@ output=${output:2}
 targets='[{"Key":"InstanceIds","Values":['${output}']}]'
 
 # Print the instance IDs in the format required by the SSM document
-cat $targets
+echo $targets
 
 
 aws ssm send-command --document-name "apache_document" \
