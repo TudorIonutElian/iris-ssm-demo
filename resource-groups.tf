@@ -11,6 +11,10 @@ resource "aws_resourcegroups_group" "development_ec2_resources" {
             {
                 "Key": "Environment",
                 "Values": ["Development"]
+            },
+            {
+                "Key": "State.Name",
+                "Values": ["running"]
             }
         ]
     }
