@@ -1,4 +1,4 @@
-resource "null_resource" "last_resource" {
+resource "null_resource" "command_execution" {
   depends_on = [
     aws_instance.ssm_instances, aws_resourcegroups_group.development_ec2_resources
   ]
