@@ -1,0 +1,14 @@
+/**********************************************************
+  # Create Ec2 Instance called iris_tf_demo_ec2_instance
+**********************************************************/
+resource "aws_instance" "ssm_instance" {
+  ami           = data.aws_ami.teamcity_ami_filter.id
+  instance_type = var.ssm_instance_type
+  key_name      = aws_key_pair.ssm_key.key_name
+  count         = var.ssm_instance_count
+
+  tags = {
+    Name = "ssm_instance"
+    Environment = "development"
+  }
+}
