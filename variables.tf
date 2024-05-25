@@ -1,6 +1,6 @@
 variable "ssm_instance_type" {
   type        = string
-  default     = 5
+  default     = "t2.micro"
   description = "SSM instance type"
 }
 
