@@ -15,10 +15,10 @@ resource "tls_private_key" "ssm_key_pair" {
   # The key pair is saved in the local file system
 **********************************************************/
 resource "aws_key_pair" "ssm_key" {
-  key_name   = "ssm_key_pair"      
+  key_name   = "ssm_key_pair"
   public_key = tls_private_key.ssm_key_pair.public_key_openssh
 
-  provisioner "local-exec" { 
+  provisioner "local-exec" {
     command = "echo '${tls_private_key.ssm_key_pair.private_key_pem}' > ./ssm_key.pem"
   }
 }

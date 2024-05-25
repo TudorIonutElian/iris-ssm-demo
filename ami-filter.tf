@@ -3,16 +3,16 @@
 **********************************************************/
 
 data "aws_ami" "iris_ssm_ami_filter" {
-  owners = ["amazon"]
+  owners      = ["amazon"]
   most_recent = true
 
   filter {
-    name = "name"
+    name   = "name"
     values = ["${var.startsWith}-*-${var.endsWith}"]
   }
 
   filter {
-    name = "architecture"
+    name   = "architecture"
     values = ["${var.architecture}"]
   }
 }

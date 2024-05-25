@@ -12,18 +12,18 @@ variable "ssm_instance_count" {
 
 variable "startsWith" {
   description = "The prefix of the AMI name"
-  type = string
-  default = "al2023-ami"
+  type        = string
+  default     = "al2023-ami"
 }
 
 variable "endsWith" {
   description = "The suffix of the AMI name"
-  type = string
-  default = "x86_64"
+  type        = string
+  default     = "x86_64"
 }
 
 variable "architecture" {
   description = "The architecture of the AMI"
-  type = string
-  default = "x86_64"
+  type        = string
+  default     = "x86_64"
 }
