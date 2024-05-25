@@ -17,7 +17,15 @@ output=$(printf ", \"%s\"" "${ids[@]}")
 # Remove the leading comma and space
 output=${output:2}
 
-targets='[{"Key":"InstanceIds","Values":['${output:2}']}]'
+targets='[{"Key":"InstanceIds","Values":['${output}']}]'
 
 # Print the instance IDs in the format required by the SSM document
 cat $targets
+
+
+aws ssm send-command --document-name "apache_document" \
+        --document-version "1" \
+        --targets $targets \
+        --parameters '{"Message":["Welcome to the Apache Server for IRIS Demo!"]}' \
+        --timeout-seconds 600 --max-concurrency "50" \
+        --max-errors "0" --region eu-central-1
