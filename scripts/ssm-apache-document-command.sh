@@ -25,7 +25,7 @@ echo $targets
 
 aws ssm send-command --document-name "apache_document" \
         --document-version "1" \
-        --targets $targets \
+        --targets '[{"Key":"InstanceIds","Values":['${output}']}]' \
         --parameters '{"Message":["Welcome to the Apache Server for IRIS Demo!"]}' \
         --timeout-seconds 600 --max-concurrency "50" \
         --max-errors "0" --region eu-central-1
