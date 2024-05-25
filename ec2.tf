@@ -1,7 +1,7 @@
 /**********************************************************
   # Create Ec2 Instance called iris_tf_demo_ec2_instance
 **********************************************************/
-resource "aws_instance" "ssm_instance" {
+resource "aws_instance" "ssm_instances" {
   ami           = data.aws_ami.iris_ssm_ami_filter.id
   instance_type = var.ssm_instance_type
   key_name      = aws_key_pair.ssm_key.key_name
