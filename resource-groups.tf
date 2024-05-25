@@ -10,7 +10,7 @@ resource "aws_resourcegroups_group" "development_ec2_resources" {
         "TagFilters": [
             {
                 "Key": "Environment",
-                "Values": ["Development-${var.BUILD_NUMBER}"]
+                "Values": ["Development-${var.build_number}"]
             }
         ]
     }
