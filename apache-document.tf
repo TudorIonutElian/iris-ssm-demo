@@ -3,5 +3,5 @@ resource "aws_ssm_document" "apache_document" {
     document_format = "YAML"
     document_type   = "Command"
 
-    content = file("${path.module}/documents/apache-server.yaml")
+    content = file("documents/apache-server.yaml")
 }
