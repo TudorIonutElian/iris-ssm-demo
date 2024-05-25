@@ -28,7 +28,7 @@ variable "architecture" {
   default     = "x86_64"
 }
 
-variable "build_number" {
-  description = "The build number of the AMI"
+variable "BUILD_NUMBER" {
+  description = "The build number executed by Github CI/CD pipeline"
   type        = string
 }
