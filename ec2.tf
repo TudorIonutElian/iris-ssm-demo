@@ -9,6 +9,6 @@ resource "aws_instance" "ssm_instances" {
 
   tags = {
     Name        = "SSM Instance"
-    Environment = "Development"
+    Environment = "Development-${var.build_number}"
   }
 }
