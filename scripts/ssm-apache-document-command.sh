@@ -18,4 +18,4 @@ output=$(printf ", \"%s\"" "${ids[@]}")
 output=${output:2}
 
 # Print the instance IDs in the format required by the SSM document
-echo "\"${output}\""
+echo $output
