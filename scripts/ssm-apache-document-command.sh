@@ -17,7 +17,7 @@ output=$(printf ", \"%s\"" "${ids[@]}")
 # Remove the leading comma and space
 output=${output:2}
 
-targets='[{"Key":"InstanceIds","Values":[$output]}]'
+targets='[{"Key":"InstanceIds","Values":['${output:2}']}]'
 
 # Print the instance IDs in the format required by the SSM document
 cat $targets
