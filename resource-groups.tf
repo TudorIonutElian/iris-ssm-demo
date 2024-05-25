@@ -9,8 +9,8 @@ resource "aws_resourcegroups_group" "development_ec2_resources" {
         ],
         "TagFilters": [
             {
-                "Key": "BuildNumber",
-                "Values": ["BuildNumber-${var.BUILD_NUMBER}"]
+                "Key": "Environment",
+                "Values": ["Development-${var.BUILD_NUMBER}"]
             }
         ]
     }
