@@ -8,7 +8,7 @@ resource "aws_instance" "ssm_instance" {
   count         = var.ssm_instance_count
 
   tags = {
-    Name        = "ssm_instance"
-    Environment = "development"
+    Name        = "SSM Instance"
+    Environment = "Development"
   }
 }

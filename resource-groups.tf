@@ -9,8 +9,8 @@ resource "aws_resourcegroups_group" "development_ec2_resources" {
         ],
         "TagFilters": [
             {
-            "Key": "Environment",
-            "Values": ["Development"]
+                "Key": "Environment",
+                "Values": ["Development"]
             }
         ]
     }
