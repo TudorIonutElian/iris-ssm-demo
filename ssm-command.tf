@@ -4,6 +4,6 @@ resource "null_resource" "command_execution" {
   ]
 
   provisioner "local-exec" {
-    command = "aws resource-groups list-group-resources --group-name Development-EC2-Resources --query 'ResourceIdentifiers[].ResourceArn' --output text | tr '\t' '\n' | cut -d'/' -f2 | xargs -I {} aws ssm send-command --document-name apache_document --instance-ids {} --region eu-central-1"
+    command = "aws ssm send-command --document-name apache-server --targets Key=resource-groups:Name,Values=Development-EC2-Resources --region eu-central-1"
   }
 }
