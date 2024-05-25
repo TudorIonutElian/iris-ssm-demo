@@ -7,7 +7,7 @@ resource "null_resource" "command_execution" {
     provisioner "local-exec" {
         command = <<EOT
                 aws ssm send-command \
-                    --targets Key=tag:Environment,Values=Development-${BUILD_NUMBER} \
+                    --targets Key=tag:BuildNumber,Values=Development-${BUILD_NUMBER} \
                     [...]
         EOT
     }
