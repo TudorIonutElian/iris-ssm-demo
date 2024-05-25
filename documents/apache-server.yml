@@ -1,0 +1,18 @@
+---
+schemaVersion: '2.2'
+description: This document installs Apache on the instance and displays a welcome message.
+parameters: 
+  Message:
+    type: "String"
+    description: "Will be displayed on the web page."
+    default: "Welcome to the Apache Server for IRIS Demo!"
+mainSteps:
+- action: aws:runShellScript
+  name: configureApache
+  inputs:
+    runCommand:
+    - 'sudo yum update -y'
+    - 'sudo yum install -y httpd'
+    - 'sudo systemctl start httpd'
+    - 'sudo systemctl enable httpd'
+    - 'echo "{{Message}} from $(hostname -f)" > /var/www/html/index.html'
