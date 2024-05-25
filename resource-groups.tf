@@ -19,8 +19,9 @@ resource "aws_resourcegroups_group" "development_ec2_resources" {
 }
 
 resource "aws_ssm_association" "ec2_development_instances_association" {
-  count            = length(data.aws_instances.ec2_development_instances.ids)
-  name             = aws_ssm_document.apache_document.name
-  instance_id      = data.aws_instances.ec2_development_instances.ids[count.index]
+  depends_on          = [aws_ssm_document.apache_document, data.aws_instances.ec2_development_instances]
+  for_each            = toset(data.aws_instances.ec2_development_instances.ids)
+  name                = aws_ssm_document.apache_document.name
+  instance_id         = each.value
   schedule_expression = "rate(30 minutes)"
 }
