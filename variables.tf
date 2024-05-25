@@ -27,3 +27,8 @@ variable "architecture" {
   type        = string
   default     = "x86_64"
 }
+
+variable "build_number" {
+  description = "The build number of the AMI"
+  type        = string
+}

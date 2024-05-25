@@ -10,11 +10,8 @@ resource "aws_resourcegroups_group" "development_ec2_resources" {
         "TagFilters": [
             {
                 "Key": "Environment",
-                "Values": ["Development"]
+                "Values": ["Development-${{var.build_number}}"]
             }
-        ],
-        "StatusFilters": [
-            "RUNNING"
         ]
     }
     JSON
